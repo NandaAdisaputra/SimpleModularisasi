@@ -11,7 +11,9 @@ import com.google.android.material.navigation.NavigationView
 import com.nandaadisaputra.dagger.databinding.ActivityMainBinding
 import com.nandaadisaputra.dagger.favorite.FavoriteFragment
 import com.nandaadisaputra.dagger.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding

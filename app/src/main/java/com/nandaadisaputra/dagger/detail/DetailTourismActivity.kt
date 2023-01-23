@@ -5,14 +5,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.nandaadisaputra.dagger.MyApplication
 import com.nandaadisaputra.dagger.R
 import com.nandaadisaputra.dagger.core.domain.model.Tourism
-import com.nandaadisaputra.dagger.core.ui.ViewModelFactory
 import com.nandaadisaputra.dagger.databinding.ActivityDetailTourismBinding
-import com.nandaadisaputra.dagger.databinding.ActivityDetailTourismBinding.inflate
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailTourismActivity : AppCompatActivity() {
 
     companion object {
@@ -20,17 +18,19 @@ class DetailTourismActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityDetailTourismBinding
+    //TODO hapus kode berikut
 
-    @Inject
-    lateinit var factory: ViewModelFactory
+//    @Inject
+//    lateinit var factory: ViewModelFactory
 
-    private val detailTourismViewModel: DetailTourismViewModel by viewModels {
-        factory
-    }
+//    private val detailTourismViewModel: DetailTourismViewModel by viewModels {
+//        factory
+//    }
+    private val detailTourismViewModel: DetailTourismViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //TODO Add Inisialisasi
-        (application as MyApplication).appComponent.inject(this)
+        //TODO hapus kode berikut
+//        (application as MyApplication).appComponent.inject(this)
 
         super.onCreate(savedInstanceState)
         binding = ActivityDetailTourismBinding.inflate(layoutInflater)
