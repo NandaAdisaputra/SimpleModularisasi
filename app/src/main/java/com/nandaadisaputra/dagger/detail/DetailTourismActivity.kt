@@ -13,35 +13,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailTourismActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
-
     private lateinit var binding: ActivityDetailTourismBinding
-    //TODO hapus kode berikut
-
-//    @Inject
-//    lateinit var factory: ViewModelFactory
-
-//    private val detailTourismViewModel: DetailTourismViewModel by viewModels {
-//        factory
-//    }
     private val detailTourismViewModel: DetailTourismViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //TODO hapus kode berikut
-//        (application as MyApplication).appComponent.inject(this)
-
         super.onCreate(savedInstanceState)
         binding = ActivityDetailTourismBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
-// TODO hapus kode berikut
-
-//        val factory = ViewModelFactory.getInstance(this)
-//        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
 
         val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
         showDetailTourism(detailTourism)
@@ -81,5 +61,8 @@ class DetailTourismActivity : AppCompatActivity() {
                 )
             )
         }
+    }
+    companion object {
+        const val EXTRA_DATA = "extra_data"
     }
 }

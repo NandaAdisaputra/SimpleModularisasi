@@ -17,14 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    //TODO hapus kode berikut
-//    @Inject
-//    lateinit var factory: ViewModelFactory
-
-    //    private lateinit var homeViewModel: HomeViewModel
-//    private val homeViewModel: HomeViewModel by viewModels {
-//        factory
-//    }
     private val homeViewModel: HomeViewModel by viewModels()
 
     private var _binding: FragmentHomeBinding? = null
@@ -37,11 +29,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
-    //TODO hapus kode berikut
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        (requireActivity().application as MyApplication).appComponent.inject(this)
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,11 +41,6 @@ class HomeFragment : Fragment() {
                 intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
                 startActivity(intent)
             }
-//TODO hapus kode berikut
-
-//            val factory = ViewModelFactory.getInstance(requireActivity())
-//            homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-
             homeViewModel.tourism.observe(viewLifecycleOwner) { tourism ->
                 if (tourism != null) {
                     when (tourism) {

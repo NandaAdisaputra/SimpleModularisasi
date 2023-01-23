@@ -15,24 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
-    //TODO hapus kode berikut
-//    @Inject
-//    lateinit var factory: ViewModelFactory
-
-    //    private lateinit var favoriteViewModel: FavoriteViewModel
-//    private val favoriteViewModel: FavoriteViewModel by viewModels {
-//        factory
-//    }
     private val favoriteViewModel: FavoriteViewModel by viewModels()
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
-
-    //TODO hapus kode berikut
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        (requireActivity().application as MyApplication).appComponent.inject(this)
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,11 +39,6 @@ class FavoriteFragment : Fragment() {
                 intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
                 startActivity(intent)
             }
-//TODO hapus kode berikut
-
-//            val factory = ViewModelFactory.getInstance(requireActivity())
-//            favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
-
             favoriteViewModel.favoriteTourism.observe(viewLifecycleOwner) { dataTourism ->
                 tourismAdapter.setData(dataTourism)
                 binding.viewEmpty.root.visibility =

@@ -16,12 +16,6 @@ class AppExecutors @VisibleForTesting constructor(
     companion object {
         private const val THREAD_COUNT = 3
     }
-
-    //    constructor() : this(
-//        Executors.newSingleThreadExecutor(),
-//        Executors.newFixedThreadPool(THREAD_COUNT),
-//        MainThreadExecutor()
-//    )
     @Inject
     constructor() : this(
         Executors.newSingleThreadExecutor(),
