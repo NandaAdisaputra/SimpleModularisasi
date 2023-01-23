@@ -2,8 +2,9 @@ package com.nandaadisaputra.dagger.core.domain.usecase
 
 import com.nandaadisaputra.dagger.core.domain.model.Tourism
 import com.nandaadisaputra.dagger.core.domain.repository.ITourismRepository
+import javax.inject.Inject
 
-class TourismInteraction(private val tourismRepository: ITourismRepository): TourismUseCase {
+class TourismInteraction  @Inject constructor(private val tourismRepository: ITourismRepository): TourismUseCase {
 
     override fun getAllTourism() = tourismRepository.getAllTourism()
 

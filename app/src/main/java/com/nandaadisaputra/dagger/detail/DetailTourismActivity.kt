@@ -1,15 +1,17 @@
 package com.nandaadisaputra.dagger.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.nandaadisaputra.dagger.MyApplication
 import com.nandaadisaputra.dagger.R
 import com.nandaadisaputra.dagger.core.domain.model.Tourism
 import com.nandaadisaputra.dagger.core.ui.ViewModelFactory
 import com.nandaadisaputra.dagger.databinding.ActivityDetailTourismBinding
 import com.nandaadisaputra.dagger.databinding.ActivityDetailTourismBinding.inflate
+import javax.inject.Inject
 
 class DetailTourismActivity : AppCompatActivity() {
 
@@ -17,18 +19,29 @@ class DetailTourismActivity : AppCompatActivity() {
         const val EXTRA_DATA = "extra_data"
     }
 
-    private lateinit var detailTourismViewModel: DetailTourismViewModel
     private lateinit var binding: ActivityDetailTourismBinding
 
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val detailTourismViewModel: DetailTourismViewModel by viewModels {
+        factory
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        //TODO Add Inisialisasi
+        (application as MyApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
-        binding = inflate(layoutInflater)
+        binding = ActivityDetailTourismBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
 
-        val factory = ViewModelFactory.getInstance(this)
-        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
+// TODO hapus kode berikut
+
+//        val factory = ViewModelFactory.getInstance(this)
+//        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
 
         val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
         showDetailTourism(detailTourism)
@@ -54,9 +67,19 @@ class DetailTourismActivity : AppCompatActivity() {
 
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (statusFavorite) {
-            binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_white))
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_favorite_white
+                )
+            )
         } else {
-            binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_not_favorite_white))
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_not_favorite_white
+                )
+            )
         }
     }
 }
